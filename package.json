@@ -1,0 +1,25 @@
+{
+  "name": "Project-ToDo-List",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CatQueenCodes/Project-ToDo-List.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CatQueenCodes/Project-ToDo-List/issues"
+  },
+  "homepage": "https://github.com/CatQueenCodes/Project-ToDo-List#readme",
+  "devDependencies": {
+    "webpack": "^5.11.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
