@@ -1,3 +1,4 @@
+import { allProjects } from '/src/index.js';
 import {project} from './taskFactory'
 
 //render task in DOM + complete & delete functionality
@@ -75,10 +76,18 @@ function renderProject(item){
     const deleteButton = document.createElement('button');
     deleteButton.className = 'projectDeleteBtn';
     deleteButton.textContent = 'X';
-    //add event listener
+    item.id = allProjects.indexOf(item);
+    let index = item.id;
+    deleteButton.addEventListener('click', deleteProject); //edit after main array is added
     projectWrapper.appendChild(deleteButton);
 
     projectHolder.appendChild(projectWrapper);
+
+    function deleteProject() {
+        allProjects.splice(index, 1);
+        projectHolder.innerHTML = '';
+        allProjects.forEach(item => renderProject(item)); console.table(allProjects)
+    }
 }
 
 export {renderTask, renderProject}

@@ -1,5 +1,6 @@
 import {projectFactory} from './projectFactory'
 import {renderProject} from './DOM'
+import { allProjects } from '/src/index.js'
 
 
 function hideProjectForm() {
@@ -14,8 +15,9 @@ function displayProjectForm() {
 function addProject() {
     event.preventDefault();
     let project = projectFactory(projectName.value, projectDescription.value)
-    console.log(project);
     hideProjectForm();
+    allProjects.push(project);
+    projectForm.reset();
     renderProject(project);
 }
 export {hideProjectForm, displayProjectForm, addProject}

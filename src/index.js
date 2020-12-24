@@ -1,7 +1,9 @@
 
 import {addTaskToProject, hideTaskForm, displayTaskForm} from './modules/taskHelpers'
-import {hideProjectForm, displayProjectForm} from './modules/projectHelpers'
-import {addProject} from './modules/projectHelpers'
+import {hideProjectForm, displayProjectForm, addProject} from './modules/projectHelpers'
+
+//holds app projects
+const allProjects = []; 
 
 //display form when '+ Project' clicked
 const addProjectButton = document.getElementById('addProject');
@@ -23,3 +25,4 @@ submitTaskButton.addEventListener('click', addTaskToProject);
 hideTaskForm();
 hideProjectForm();
 
+export {allProjects}
