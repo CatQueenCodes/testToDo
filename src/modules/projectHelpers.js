@@ -1,4 +1,5 @@
 import {projectFactory} from './projectFactory'
+import {renderProject} from './DOM'
 
 
 function hideProjectForm() {
@@ -15,5 +16,6 @@ function addProject() {
     let project = projectFactory(projectName.value, projectDescription.value)
     console.log(project);
     hideProjectForm();
+    renderProject(project);
 }
 export {hideProjectForm, displayProjectForm, addProject}

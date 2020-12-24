@@ -32,3 +32,20 @@ body {
     height: 500px;
     width: 700px;
 }
+
+.completeButton {
+    background-color:transparent; 
+}
+
+.project {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(194, 192, 192);
+    border: solid black 2px;
+    margin: 3px;
+}
+
+.projectDeleteBtn {
+background-color: rgba(241, 78, 56, 0.986);
+margin-left: 10px
+}

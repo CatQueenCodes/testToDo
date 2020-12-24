@@ -49,14 +49,36 @@ function renderTask(item){
     //change color of completed task
     function changeStatus(){   
         status = !status; console.log(status);
-        (status === false) ? this.style.backgroundColor = 'pink' : this.style.backgroundColor = 'orange';
+        (status === false) ? this.style.backgroundColor = 'transparent' : this.style.backgroundColor = 'rgb(115, 155, 96)';
     }
 }
 
+//going to need to render tasks in here too when it is clicked
 
 // render PROJECT and give project functionality
-function renderProject(){
-    
+function renderProject(item){
+    const projectHolder = document.getElementById('projectsHolder');
+    const name = document.getElementById('Name')
+    const description = document.getElementById('Description')
+
+    const projectWrapper = document.createElement('div');
+    projectWrapper.className = 'project';
+
+    const projectName = document.createElement('div');
+    projectName.className = 'projectName';
+    projectName.textContent = item.name;
+    projectWrapper.appendChild(projectName);
+
+    name.textContent = item.name;
+    description.textContent = item.description;
+
+    const deleteButton = document.createElement('button');
+    deleteButton.className = 'projectDeleteBtn';
+    deleteButton.textContent = 'X';
+    //add event listener
+    projectWrapper.appendChild(deleteButton);
+
+    projectHolder.appendChild(projectWrapper);
 }
 
-export {renderTask}
+export {renderTask, renderProject}
