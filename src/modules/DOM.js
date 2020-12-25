@@ -1,8 +1,10 @@
 import { allProjects } from '/src/index.js';
-import {project} from './taskFactory'
+
+//for use in /addTaskToProject, tells it which project to add task to, set when project is clicked
+let specificProject = ''; 
 
 //render task in DOM + complete & delete functionality
-function renderTask(item){
+function renderTask(item,project){
     const taskHolder = document.getElementById('tasksHolder');
 
     const taskWrapper = document.createElement('div');
@@ -11,7 +13,7 @@ function renderTask(item){
     const completeButton = document.createElement('button');
     completeButton.className = 'taskCompleteBtn';
     completeButton.textContent = '✓';
-    let status = item.completedStatus; console.log(status);
+    let status = item.completedStatus; 
     completeButton.addEventListener('click', changeStatus)
     taskWrapper.appendChild(completeButton);
     
@@ -40,7 +42,6 @@ function renderTask(item){
 
     taskHolder.append(taskWrapper)
 
-    //delete task from project array
     function deleteTask() {
        project.splice(index,1); 
        taskHolder.innerHTML =' ';
@@ -61,24 +62,23 @@ function renderProject(item){
     const projectHolder = document.getElementById('projectsHolder');
     const name = document.getElementById('Name')
     const description = document.getElementById('Description')
+    const taskHolder = document.getElementById('tasksHolder');
 
     const projectWrapper = document.createElement('div');
     projectWrapper.className = 'project';
+    projectWrapper.addEventListener('click', displayProject); //renders current projects tasks
 
     const projectName = document.createElement('div');
     projectName.className = 'projectName';
     projectName.textContent = item.name;
     projectWrapper.appendChild(projectName);
 
-    name.textContent = item.name;
-    description.textContent = item.description;
-
     const deleteButton = document.createElement('button');
     deleteButton.className = 'projectDeleteBtn';
     deleteButton.textContent = 'X';
     item.id = allProjects.indexOf(item);
     let index = item.id;
-    deleteButton.addEventListener('click', deleteProject); //edit after main array is added
+    deleteButton.addEventListener('click', deleteProject); 
     projectWrapper.appendChild(deleteButton);
 
     projectHolder.appendChild(projectWrapper);
@@ -88,6 +88,13 @@ function renderProject(item){
         projectHolder.innerHTML = '';
         allProjects.forEach(item => renderProject(item)); console.table(allProjects)
     }
+
+    function displayProject(){
+        specificProject = allProjects[index]; console.log(specificProject);
+        name.textContent = item.name;
+        description.textContent = item.description;
+        taskHolder.innerHTML = '';
+    }
 }
 
-export {renderTask, renderProject}
+export {renderTask, renderProject, specificProject}

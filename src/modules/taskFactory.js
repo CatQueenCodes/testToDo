@@ -1,4 +1,3 @@
-const project = [];
 
 //complete, name, priority, date, always want complete to be set to false automatically, id = project.length
 const taskFactory = (taskName, priority, date) => {
@@ -7,5 +6,4 @@ const taskFactory = (taskName, priority, date) => {
     return{completedStatus, taskName, priority, date, id} 
 }
 
-
-export {taskFactory, project}
+export {taskFactory}

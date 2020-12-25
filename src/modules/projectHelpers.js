@@ -19,5 +19,6 @@ function addProject() {
     allProjects.push(project);
     projectForm.reset();
     renderProject(project);
+    console.log('AllProject:', allProjects)
 }
 export {hideProjectForm, displayProjectForm, addProject}
