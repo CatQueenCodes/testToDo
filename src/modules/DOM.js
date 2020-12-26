@@ -1,6 +1,7 @@
-import { allProjects } from '/src/index.js';
+import {allProjects} from '/src/index.js';
+import {displayAddTaskButton} from './taskHelpers';
 
-//for use in /addTaskToProject, tells it which project to add task to, set when project is clicked
+//for use in /addTaskToProject() deleteTask(), tells it which project to add task to, set when project is clicked
 let specificProject = ''; 
 
 //render task in DOM + complete & delete functionality
@@ -86,14 +87,19 @@ function renderProject(item){
     function deleteProject() {
         allProjects.splice(index, 1);
         projectHolder.innerHTML = '';
-        allProjects.forEach(item => renderProject(item)); console.table(allProjects)
+        allProjects.forEach(project => renderProject(project)); console.table(allProjects)
     }
 
     function displayProject(){
+        console.log(event.target)
         specificProject = allProjects[index]; //console.log(specificProject.tasks);
-        name.textContent = item.name;
-        description.textContent = item.description;
-        taskHolder.innerHTML = '';
+        if(event.target !== deleteButton) {
+            name.textContent = item.name;
+            description.textContent = item.description;
+            taskHolder.innerHTML = '';
+            specificProject.tasks.forEach(task => {renderTask(task)})
+            displayAddTaskButton();
+        }
     }
 }
 

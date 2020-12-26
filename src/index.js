@@ -1,6 +1,7 @@
 
-import {addTaskToProject, hideTaskForm, displayTaskForm} from './modules/taskHelpers'
+import {addTaskToProject, hideTaskForm, displayTaskForm, hideAddTaskButton} from './modules/taskHelpers'
 import {hideProjectForm, displayProjectForm, addProject} from './modules/projectHelpers'
+//import { renderProject } from './modules/DOM';
 
 //holds app projects
 const allProjects = []; 
@@ -25,4 +26,12 @@ submitTaskButton.addEventListener('click', addTaskToProject);
 hideTaskForm();
 hideProjectForm();
 
+//keeps add task button hidden
+hideAddTaskButton();
+
+
+//const defaultProj = {name: 'Default Project', description: 'This is the default project', tasks:[{taskName: 'Default Task', priority: 'Medium', date: 10/10/10, completedStatus: false, id: 0}], id:0} 
+//renderProject(defaultProj);
 export {allProjects}
+
+// {name: 'Default Project', description: 'This is the default project', tasks:[{taskName: 'Default Task', priority: 'Medium', date: 10/10/10, completedStatus: false, id: 0}], id:0}

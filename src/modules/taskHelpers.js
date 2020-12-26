@@ -26,5 +26,15 @@ function displayTaskForm() {
     taskForm.style.display = 'block';
 }
 
+function hideAddTaskButton() {
+    const addTask = document.getElementById('addTask');
+    addTask.style.display = 'none';
+}
 
-export {addTaskToProject, hideTaskForm, displayTaskForm}
+function displayAddTaskButton() {
+    const addTask = document.getElementById('addTask');
+    addTask.style.display = 'block';
+}
+
+
+export {addTaskToProject, hideTaskForm, displayTaskForm, hideAddTaskButton, displayAddTaskButton}

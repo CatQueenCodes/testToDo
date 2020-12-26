@@ -1,6 +1,6 @@
 import {projectFactory} from './projectFactory'
 import {renderProject} from './DOM'
-import { allProjects } from '/src/index.js'
+import {allProjects} from '/src/index.js'
 
 
 function hideProjectForm() {
