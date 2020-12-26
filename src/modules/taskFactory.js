@@ -3,7 +3,7 @@
 const taskFactory = (taskName, priority, date) => {
     let completedStatus = false;
     let id = ' '
-    return{completedStatus, taskName, priority, date, id} 
+    return{completedStatus, taskName, priority, date, id} //id 
 }
 
 export {taskFactory}

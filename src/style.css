@@ -33,6 +33,17 @@ body {
     width: 700px;
 }
 
+#Name {
+    font-size: 40px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+#Description {
+    font-size: 25px;
+    
+}
+
 .completeButton {
     background-color:transparent; 
 }
@@ -46,6 +57,7 @@ body {
 }
 
 .projectDeleteBtn {
-background-color: rgba(241, 78, 56, 0.986);
-margin-left: 10px
+    background-color: rgba(241, 78, 56, 0.986);
+    margin-left: 10px;
+    margin-right: 10px;
 }

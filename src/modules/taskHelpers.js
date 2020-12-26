@@ -11,8 +11,8 @@ function addTaskToProject() {
     project.push(task);
     taskForm.reset();
     taskForm.style.display = 'none';
-    renderTask(task, project);
-    console.log(specificProject, specificProject.tasks)
+    renderTask(task);
+    console.log('This Projects Task', specificProject.tasks)
 }
 
 //set so form is hidden till clicked 
