@@ -1,13 +1,13 @@
 
 import {taskFactory} from './taskFactory'
-import {renderTask, specificProject} from './DOM'
+import {specificTask, renderTask, specificProject} from './DOM'
 
 
 //when you click add button it adds the task to the Project Array and uses the values in the task Factory.
 function addTaskToProject() {
-    let taskHolder = document.getElementById('tasksHolder')
     let task = taskFactory(nameTask.value, priority.value, date.value)
     let project = specificProject.tasks;
+    let taskholder = document.getElementById('tasksHolder');
 
     if(this.innerHTML == 'Add') {
         event.preventDefault();
@@ -23,16 +23,14 @@ function addTaskToProject() {
         event.preventDefault();
         task = taskFactory(nameTask.value, priority.value, date.value)
         task.taskDescription = taskDescription.value;
-        renderTask(task); //gives ID when task is rendered.
-        project.splice(task.id, 1, task); console.log(task.id); console.log(task)
-        taskHolder.innerHTML = '';
+        project.splice(specificTask, 1, task); console.log(task.id); console.log(task)
+        taskholder.innerHTML = '';
         specificProject.tasks.forEach(task => {renderTask(task)}); 
         console.log('This Projects Task', specificProject.tasks)
         taskForm.style.display = 'none'
         this.innerHTML = 'Add';
         taskForm.reset();
     }
-    
 }
 
 //set so form is hidden till clicked 
@@ -43,7 +41,6 @@ function hideTaskForm(){
 
 //display task form
 function displayTaskForm() {
-    const taskForm = document.getElementById('taskForm');
     taskForm.style.display = 'block';
 }
 

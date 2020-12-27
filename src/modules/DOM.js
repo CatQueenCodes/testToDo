@@ -3,7 +3,9 @@ import {displayAddTaskButton, displayTaskForm, hideAddTaskButton, hideTaskForm} 
 
 //for use in /addTaskToProject() deleteTask(), tells it which project to add task to, set when project is clicked
 let specificProject = ''; 
-let form =document.getElementById('taskForm');
+
+//for use in /addTaskToProject() when updating for splice value
+let specificTask = ''; 
 
 //render task in DOM + complete & delete functionality
 function renderTask(item){
@@ -62,14 +64,15 @@ function renderTask(item){
     //display task description and edit when clicked
 
     function editTask(){
-        if(event.target !== deleteButton || event.target !== completeButton){
+        if(event.target !== deleteButton && event.target !== completeButton){
             const updateBtn = document.getElementById('taskSubmit');
             updateBtn.textContent = 'Update';
             displayTaskForm();
             nameTask.value = item.nameTask;
             priority.value = item.priority;
             date.value = item.date;
-            taskDescription.value = item.taskDescription;    
+            taskDescription.value = item.taskDescription;
+            specificTask = item.id;  console.log(item.id)  
         }
     }
 }
@@ -124,4 +127,4 @@ function renderProject(item){
     }
 }
 
-export {renderTask, renderProject, specificProject}
+export {renderTask, renderProject, specificProject, specificTask}
