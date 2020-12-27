@@ -1,7 +1,14 @@
 body {
     background-color: rgb(171, 217, 223);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
 
+h2 {
+font-size: 40px;
+}
 .task{
     background-color: rgb(194, 192, 192);
     border: solid black 2px;
@@ -16,25 +23,23 @@ body {
 #app {
     display: flex;
     flex-direction: row;
-    border: solid 2px black;
-    height: 500px;
-    width: 1000px;
+   
+
 }
 
 #projectSide {
     border: solid 2px black;
-    height: 500px;
-    width: 300px;
+    min-width: 300px;
+    min-height: 600px;
 }
 
 #taskSide {
     border: solid 2px black;
-    height: 500px;
-    width: 700px;
+    min-width: 500px;
 }
 
 #Name {
-    font-size: 40px;
+    font-size: 30px;
     font-weight: bold;
     text-decoration: underline;
 }
@@ -60,4 +65,32 @@ body {
     background-color: rgba(241, 78, 56, 0.986);
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#tasks {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 25px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+#project {
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+button {
+    outline: none;
+}
+
+input {
+    outline: none;
+}
+
+select {
+    outline: none;
 }

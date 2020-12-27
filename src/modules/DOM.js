@@ -1,5 +1,5 @@
 import {allProjects} from '/src/index.js';
-import {displayAddTaskButton} from './taskHelpers';
+import {displayAddTaskButton, hideAddTaskButton} from './taskHelpers';
 
 //for use in /addTaskToProject() deleteTask(), tells it which project to add task to, set when project is clicked
 let specificProject = ''; 
@@ -88,6 +88,11 @@ function renderProject(item){
         allProjects.splice(index, 1);
         projectHolder.innerHTML = '';
         allProjects.forEach(project => renderProject(project)); console.table(allProjects)
+        if(allProjects.length === 0) {
+            name.textContent = 'Please Create a Project';
+            description.textContent = 'Select a project to add tasks to it!';
+            hideAddTaskButton();
+        }
     }
 
     function displayProject(){
