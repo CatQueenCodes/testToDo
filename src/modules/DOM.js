@@ -1,8 +1,9 @@
 import {allProjects} from '/src/index.js';
-import {displayAddTaskButton, hideAddTaskButton} from './taskHelpers';
+import {displayAddTaskButton, displayTaskForm, hideAddTaskButton, hideTaskForm} from './taskHelpers';
 
 //for use in /addTaskToProject() deleteTask(), tells it which project to add task to, set when project is clicked
 let specificProject = ''; 
+let form =document.getElementById('taskForm');
 
 //render task in DOM + complete & delete functionality
 function renderTask(item){
@@ -11,6 +12,7 @@ function renderTask(item){
 
     const taskWrapper = document.createElement('div');
     taskWrapper.className = 'task';
+    taskWrapper.addEventListener('click', editTask)
 
     const completeButton = document.createElement('button');
     completeButton.className = 'taskCompleteBtn';
@@ -21,8 +23,9 @@ function renderTask(item){
     
     const taskName = document.createElement('div');
     taskName.className = 'taskNameDiv';
-    taskName.textContent =  item.taskName 
+    taskName.textContent =  item.nameTask;
     taskWrapper.appendChild(taskName);
+
 
     const taskPriority = document.createElement('div');
     taskPriority.className = 'taskPriorityDiv';
@@ -38,26 +41,38 @@ function renderTask(item){
     deleteButton.className = 'taskDeleteBtn';
     deleteButton.textContent = 'X';
     item.id = specificProject.tasks.indexOf(item);
-    let index = item.id; console.log(index);
+    let index = item.id;
     deleteButton.addEventListener('click', deleteTask)
     taskWrapper.appendChild(deleteButton)
 
     taskHolder.append(taskWrapper)
 
-    function deleteTask() {
-       specificProject.tasks.splice(index,1); 
-       taskHolder.innerHTML ='';
-       specificProject.tasks.forEach(task => {renderTask(task)}); 
+    function deleteTask(){  
+        specificProject.tasks.splice(index,1); 
+        taskHolder.innerHTML ='';
+        specificProject.tasks.forEach(task => {renderTask(task)}); 
     }
 
     //change color of completed task
-    function changeStatus(){   
+    function changeStatus(){  
         status = !status; console.log(status);
-        (status === false) ? this.style.backgroundColor = 'transparent' : this.style.backgroundColor = 'rgb(115, 155, 96)';
+        (status === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';
+    }
+
+    //display task description and edit when clicked
+
+    function editTask(){
+        if(event.target !== deleteButton || event.target !== completeButton){
+            const updateBtn = document.getElementById('taskSubmit');
+            updateBtn.textContent = 'Update';
+            displayTaskForm();
+            nameTask.value = item.nameTask;
+            priority.value = item.priority;
+            date.value = item.date;
+            taskDescription.value = item.taskDescription;    
+        }
     }
 }
-
-//going to need to render tasks in here too when it is clicked
 
 // render PROJECT and give project functionality
 function renderProject(item){
@@ -89,6 +104,7 @@ function renderProject(item){
         projectHolder.innerHTML = '';
         allProjects.forEach(project => renderProject(project)); console.table(allProjects)
         if(allProjects.length === 0) {
+            taskHolder.innerHTML = '';
             name.textContent = 'Please Create a Project';
             description.textContent = 'Select a project to add tasks to it!';
             hideAddTaskButton();

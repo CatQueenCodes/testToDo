@@ -5,14 +5,34 @@ import {renderTask, specificProject} from './DOM'
 
 //when you click add button it adds the task to the Project Array and uses the values in the task Factory.
 function addTaskToProject() {
-    event.preventDefault();
-    let task = taskFactory(taskName.value, priority.value, date.value)
+    let taskHolder = document.getElementById('tasksHolder')
+    let task = taskFactory(nameTask.value, priority.value, date.value)
     let project = specificProject.tasks;
-    project.push(task);
-    taskForm.reset();
-    taskForm.style.display = 'none';
-    renderTask(task);
-    console.log('This Projects Task', specificProject.tasks)
+
+    if(this.innerHTML == 'Add') {
+        event.preventDefault();
+        task = taskFactory(nameTask.value, priority.value, date.value)
+        // let project = specificProject.tasks;
+        task.taskDescription = taskDescription.value;
+        project.push(task);
+        taskForm.reset();
+        taskForm.style.display = 'none';
+        renderTask(task);
+        console.log('This Projects Task', specificProject.tasks)
+    }else if(this.innerHTML == 'Update'){
+        event.preventDefault();
+        task = taskFactory(nameTask.value, priority.value, date.value)
+        task.taskDescription = taskDescription.value;
+        renderTask(task); //gives ID when task is rendered.
+        project.splice(task.id, 1, task); console.log(task.id); console.log(task)
+        taskHolder.innerHTML = '';
+        specificProject.tasks.forEach(task => {renderTask(task)}); 
+        console.log('This Projects Task', specificProject.tasks)
+        taskForm.style.display = 'none'
+        this.innerHTML = 'Add';
+        taskForm.reset();
+    }
+    
 }
 
 //set so form is hidden till clicked 
@@ -23,6 +43,7 @@ function hideTaskForm(){
 
 //display task form
 function displayTaskForm() {
+    const taskForm = document.getElementById('taskForm');
     taskForm.style.display = 'block';
 }
 
@@ -38,3 +59,5 @@ function displayAddTaskButton() {
 
 
 export {addTaskToProject, hideTaskForm, displayTaskForm, hideAddTaskButton, displayAddTaskButton}
+
+// https://medium.com/javascript-scene/javascript-factory-functions-with-es6-4d224591a8b1 object in ff

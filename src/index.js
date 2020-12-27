@@ -13,6 +13,7 @@ addProjectButton.addEventListener('click', displayProjectForm)
 //submit project button 
 const submitProjectButton = document.getElementById('projectSubmit');
 submitProjectButton.addEventListener('click', addProject)
+
 //displays tasks when '+ Task' is clicked
 const addTaskButton = document.getElementById('addTask');
 addTaskButton.addEventListener('click', displayTaskForm) 

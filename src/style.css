@@ -23,8 +23,6 @@ font-size: 40px;
 #app {
     display: flex;
     flex-direction: row;
-   
-
 }
 
 #projectSide {
@@ -94,3 +92,4 @@ input {
 select {
     outline: none;
 }
+
