@@ -16,7 +16,7 @@ function addTaskToProject() {
         task.taskDescription = taskDescription.value;
         project.push(task);
         taskForm.reset();
-        taskForm.style.display = 'none';
+        hideTaskForm();
         renderTask(task);
         console.log('This Projects Task', specificProject.tasks)
     }else if(this.innerHTML == 'Update'){
@@ -27,7 +27,7 @@ function addTaskToProject() {
         taskholder.innerHTML = '';
         specificProject.tasks.forEach(task => {renderTask(task)}); 
         console.log('This Projects Task', specificProject.tasks)
-        taskForm.style.display = 'none'
+        hideTaskForm();
         this.innerHTML = 'Add';
         taskForm.reset();
     }

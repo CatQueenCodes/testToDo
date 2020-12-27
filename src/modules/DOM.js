@@ -9,7 +9,7 @@ let specificTask = '';
 
 //render task in DOM + complete & delete functionality
 function renderTask(item){
-    
+    const submitTaskBtn = document.getElementById('taskSubmit');
     const taskHolder = document.getElementById('tasksHolder');
 
     const taskWrapper = document.createElement('div');
@@ -50,6 +50,9 @@ function renderTask(item){
     taskHolder.append(taskWrapper)
 
     function deleteTask(){  
+        hideTaskForm();
+        taskForm.reset()
+        submitTaskBtn.textContent = 'Add';
         specificProject.tasks.splice(index,1); 
         taskHolder.innerHTML ='';
         specificProject.tasks.forEach(task => {renderTask(task)}); 
@@ -65,8 +68,8 @@ function renderTask(item){
 
     function editTask(){
         if(event.target !== deleteButton && event.target !== completeButton){
-            const updateBtn = document.getElementById('taskSubmit');
-            updateBtn.textContent = 'Update';
+            const submitTaskBtn = document.getElementById('taskSubmit');
+            submitTaskBtn.textContent = 'Update';
             displayTaskForm();
             nameTask.value = item.nameTask;
             priority.value = item.priority;
