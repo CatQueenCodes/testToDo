@@ -19,7 +19,6 @@ function renderTask(item){
     const completeButton = document.createElement('button');
     completeButton.className = 'taskCompleteBtn';
     completeButton.textContent = '✓';
-    let status = item.completedStatus; 
     completeButton.addEventListener('click', changeStatus)
     taskWrapper.appendChild(completeButton);
     
@@ -60,8 +59,8 @@ function renderTask(item){
 
     //change color of completed task
     function changeStatus(){  
-        status = !status; console.log(status);
-        (status === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';
+        item.completedStatus = !item.completedStatus;  console.log(item);
+        (item.completedStatus === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';
     }
 
     //display task description and edit when clicked

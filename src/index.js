@@ -1,10 +1,10 @@
 
 import {addTaskToProject, hideTaskForm, displayTaskForm, hideAddTaskButton} from './modules/taskHelpers'
 import {hideProjectForm, displayProjectForm, addProject} from './modules/projectHelpers'
-//import { renderProject } from './modules/DOM';
+import { renderProject } from './modules/DOM';
 
 //holds app projects
-const allProjects = []; 
+let allProjects = []; 
 
 //display form when '+ Project' clicked
 const addProjectButton = document.getElementById('addProject');
@@ -31,8 +31,20 @@ hideProjectForm();
 hideAddTaskButton();
 
 
-//const defaultProj = {name: 'Default Project', description: 'This is the default project', tasks:[{taskName: 'Default Task', priority: 'Medium', date: 10/10/10, completedStatus: false, id: 0}], id:0} 
-//renderProject(defaultProj);
+// //Local Storage functions
+// function setData() {
+//     localStorage.setItem('allProjects', JSON.stringify(allProjects));
+// }
+
+// function getData(){
+//     let project = localStorage.getItem('allProjects');
+//     project = JSON.parse(project);
+//     allProjects = project;
+//     allProjects.forEach(project => { renderProject(project)});
+// }
+
+// getData();
+
 export {allProjects}
 
 // {name: 'Default Project', description: 'This is the default project', tasks:[{taskName: 'Default Task', priority: 'Medium', date: 10/10/10, completedStatus: false, id: 0}], id:0}
