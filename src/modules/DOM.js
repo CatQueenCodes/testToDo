@@ -117,14 +117,12 @@ function renderProject(item){
 
     function deleteProject() {
         allProjects.splice(index, 1);
-        projectHolder.innerHTML = '';
+        projectHolder.innerHTML = ''
+        taskHolder.innerHTML = '';
+        name.textContent = 'Please Create a Project';
+        description.textContent = 'Select a project to add tasks to it!';
+        hideAddTaskButton();
         allProjects.forEach(project => renderProject(project)); console.table(allProjects)
-        if(allProjects.length === 0) {
-            taskHolder.innerHTML = '';
-            name.textContent = 'Please Create a Project';
-            description.textContent = 'Select a project to add tasks to it!';
-            hideAddTaskButton();
-        }
         setData();
     }
 

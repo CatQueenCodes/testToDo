@@ -208,15 +208,13 @@ function renderProject(item){
 
     function deleteProject() {
         _src_index_js__WEBPACK_IMPORTED_MODULE_0__.allProjects.splice(index, 1);
-        projectHolder.innerHTML = '';
+        projectHolder.innerHTML = ''
+        taskHolder.innerHTML = '';
+        name.textContent = 'Please Create a Project';
+        description.textContent = 'Select a project to add tasks to it!';
+        (0,_taskHelpers__WEBPACK_IMPORTED_MODULE_1__.hideAddTaskButton)();
         _src_index_js__WEBPACK_IMPORTED_MODULE_0__.allProjects.forEach(project => renderProject(project)); console.table(_src_index_js__WEBPACK_IMPORTED_MODULE_0__.allProjects)
-        if(_src_index_js__WEBPACK_IMPORTED_MODULE_0__.allProjects.length === 0) {
-            taskHolder.innerHTML = '';
-            name.textContent = 'Please Create a Project';
-            description.textContent = 'Select a project to add tasks to it!';
-            (0,_taskHelpers__WEBPACK_IMPORTED_MODULE_1__.hideAddTaskButton)();
-        }
-        (0,_src_index_js__WEBPACK_IMPORTED_MODULE_0__.setData)();
+        ;(0,_src_index_js__WEBPACK_IMPORTED_MODULE_0__.setData)();
     }
 
     function displayProject(){
