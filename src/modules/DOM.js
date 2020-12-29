@@ -1,4 +1,4 @@
-import {allProjects} from '/src/index.js';
+import {allProjects, setData} from '/src/index.js';
 import {displayAddTaskButton, displayTaskForm, hideAddTaskButton, hideTaskForm} from './taskHelpers';
 
 //for use in /addTaskToProject() deleteTask(), tells it which project to add tasks to, set when project is clicked
@@ -60,6 +60,7 @@ function renderTask(item){
         specificProject.tasks.splice(index,1); 
         taskHolder.innerHTML ='';
         specificProject.tasks.forEach(task => {renderTask(task)}); 
+        setData();
     }
 
     //change color of completed task    //could also just re-render and remove color change on click since it will change the status and re-rendering will render it with new color linked to status
@@ -69,6 +70,7 @@ function renderTask(item){
         specificProject.tasks.forEach(task => {renderTask(task)}); 
         (item.completedStatus === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';  //need this line and the one after so color is updated if complete button is clicked during  'update task' is
         specificComplete = item.completedStatus; console.log(specificComplete); 
+        setData();
     }
 
     //display task description and edit when clicked
@@ -82,7 +84,8 @@ function renderTask(item){
             date.value = item.date;
             taskDescription.value = item.taskDescription;
             specificTask = item.id;  console.log(item.id)  
-            specificComplete = item.completedStatus; //idk if i need this or not 
+            specificComplete = item.completedStatus; 
+            setData();
         }
     }
 }
@@ -122,6 +125,7 @@ function renderProject(item){
             description.textContent = 'Select a project to add tasks to it!';
             hideAddTaskButton();
         }
+        setData();
     }
 
     function displayProject(){

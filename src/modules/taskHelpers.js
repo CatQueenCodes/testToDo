@@ -1,7 +1,7 @@
 
 import {taskFactory} from './taskFactory'
 import {specificTask, renderTask, specificProject, specificComplete} from './DOM'
-//import {setData} from '/src/index.js'
+import {setData} from '/src/index.js'
 
 //when you click add button it adds the task to the Project Array and uses the values in the task Factory.
 function addTaskToProject() {
@@ -32,6 +32,7 @@ function addTaskToProject() {
         this.innerHTML = 'Add';
         taskForm.reset();
     }
+    setData();
 }
 
 //set so form is hidden till clicked 
