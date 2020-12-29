@@ -20,5 +20,6 @@ function addProject() {
     projectForm.reset();
     renderProject(project);
     console.log('AllProject:', allProjects)
+    setData();
 }
 export {hideProjectForm, displayProjectForm, addProject}
