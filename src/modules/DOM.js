@@ -7,6 +7,8 @@ let specificProject = '';
 //for use in /addTaskToProject() when updating for splice value
 let specificTask = ''; 
 
+let specificComplete = '';
+
 //render task in DOM + complete & delete functionality
 function renderTask(item){
     const submitTaskBtn = document.getElementById('taskSubmit');
@@ -19,6 +21,7 @@ function renderTask(item){
     const completeButton = document.createElement('button');
     completeButton.className = 'taskCompleteBtn';
     completeButton.textContent = '✓';
+    (item.completedStatus === false) ? completeButton.style.backgroundColor = '#EFEFEF' : completeButton.style.backgroundColor = 'rgb(115, 155, 96)';
     completeButton.addEventListener('click', changeStatus)
     taskWrapper.appendChild(completeButton);
     
@@ -57,17 +60,17 @@ function renderTask(item){
         specificProject.tasks.forEach(task => {renderTask(task)}); 
     }
 
-    //change color of completed task
+    //change color of completed task    //could also just re-render and remove color change on click since it will change the status and re-rendering will render it with new color linked to status
     function changeStatus(){  
         item.completedStatus = !item.completedStatus;  console.log(item);
-        (item.completedStatus === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';
+        (item.completedStatus === false) ? this.style.backgroundColor = '#EFEFEF' : this.style.backgroundColor = 'rgb(115, 155, 96)';  //something in render so that if the status is changed it renders in the correct color, not only when clicked
+        specificComplete = item.completedStatus; console.log(specificComplete); //idk if i need this , idk about specific task either
     }
 
     //display task description and edit when clicked
 
     function editTask(){
         if(event.target !== deleteButton && event.target !== completeButton){
-            const submitTaskBtn = document.getElementById('taskSubmit');
             submitTaskBtn.textContent = 'Update';
             displayTaskForm();
             nameTask.value = item.nameTask;
@@ -75,6 +78,7 @@ function renderTask(item){
             date.value = item.date;
             taskDescription.value = item.taskDescription;
             specificTask = item.id;  console.log(item.id)  
+            specificComplete = item.completedStatus; //idk if i need this or not 
         }
     }
 }
@@ -129,4 +133,4 @@ function renderProject(item){
     }
 }
 
-export {renderTask, renderProject, specificProject, specificTask}
+export {renderTask, renderProject, specificProject, specificTask, specificComplete}

@@ -1,7 +1,7 @@
 
 import {taskFactory} from './taskFactory'
-import {specificTask, renderTask, specificProject} from './DOM'
-
+import {specificTask, renderTask, specificProject, specificComplete} from './DOM'
+//import {setData} from '/src/index.js'
 
 //when you click add button it adds the task to the Project Array and uses the values in the task Factory.
 function addTaskToProject() {
@@ -9,10 +9,10 @@ function addTaskToProject() {
     let project = specificProject.tasks;
     let taskholder = document.getElementById('tasksHolder');
 
+   
     if(this.innerHTML == 'Add') {
         event.preventDefault();
         task = taskFactory(nameTask.value, priority.value, date.value)
-        // let project = specificProject.tasks;
         task.taskDescription = taskDescription.value;
         project.push(task);
         taskForm.reset();
@@ -23,6 +23,7 @@ function addTaskToProject() {
         event.preventDefault();
         task = taskFactory(nameTask.value, priority.value, date.value)
         task.taskDescription = taskDescription.value;
+        task.completedStatus = specificComplete;console.log(specificTask) //idk if I need this  
         project.splice(specificTask, 1, task); console.log(task.id); console.log(task)
         taskholder.innerHTML = '';
         specificProject.tasks.forEach(task => {renderTask(task)}); 
