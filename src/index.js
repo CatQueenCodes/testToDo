@@ -31,16 +31,20 @@ hideProjectForm();
 hideAddTaskButton();
 
 
-//Local Storage functions
+// Local Storage functions
 function setData() {
     localStorage.setItem('allProjects', JSON.stringify(allProjects));
 }
 
 function getData(){
-    let project = localStorage.getItem('allProjects');
-    project = JSON.parse(project);
-    allProjects = project;
-    allProjects.forEach(project => { renderProject(project)});
+    if(!localStorage.allProjects){
+        setData();
+    }else{
+        let project = localStorage.getItem('allProjects');
+        project = JSON.parse(project);
+        allProjects = project;
+        allProjects.forEach(project => { renderProject(project)});
+    }
 }
 
 getData();
