@@ -15,6 +15,5 @@ function setId () {
     return Math.random();
 }
 
-setId();
 
 export {setId, createElement}

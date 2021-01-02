@@ -16,10 +16,11 @@ export class Task {
 
     render() {
         const taskWrapper = createElement('div', this.id, 'task', null, taskContainer); 
-        //event listener for click/edit?
+        //event listener for click/edit?  //set specific task?
 
         const completeButton = createElement('button', null, 'taskCompleteButton', '✓', taskWrapper);
         //event listener for changing status?
+
         (this.completedStatus === false) ? completeButton.style.backgroundColor = '#EFEFEF' : completeButton.style.backgroundColor = 'rgb(115, 155, 96)';
         const taskName = createElement('div', null, 'taskNameDiv', this.name, taskWrapper);
         const taskPriority = createElement('div', null, 'taskPriorityDiv', this.priority, taskWrapper);
@@ -35,12 +36,5 @@ task1.render();
 
 
 let selectedTask;
-
-// function createElement(type, id, classList, info, parent) {
-//     const element = document.createElement(type);
-//     if(id) element.id = id;
-//     if(classList) element.classList.add(classList);
-//     if(info) element.textContent = info;
-// }
 
 //method for when it is clicked set specific task

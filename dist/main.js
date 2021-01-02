@@ -9,10 +9,61 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _mod_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mod/dom */ "./src/mod/dom.js");
-/* harmony import */ var _mod_Task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mod/Task */ "./src/mod/Task.js");
+/* harmony import */ var _mod_Task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./mod/Task */ "./src/mod/Task.js");
+/* harmony import */ var _mod_Project__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mod/Project */ "./src/mod/Project.js");
 
 
+
+
+
+
+/***/ }),
+
+/***/ "./src/mod/Project.js":
+/*!****************************!*\
+  !*** ./src/mod/Project.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Project": () => /* binding */ Project
+/* harmony export */ });
+/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ "./src/mod/dom.js");
+
+
+
+
+const projectContainer = document.getElementById('projectsHolder');
+
+class Project {
+    constructor(project, description) {
+        this.project = project;
+        this.description = description;
+        this.id = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.setId)();
+        this.tasks = [];
+    }
+
+    render() {  
+        //event listener for selecting specific projects
+        const projectWrapper = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('div', this.id, 'project', null, projectContainer);
+
+        const deleteButton = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('button', null, 'projectDeleteButton', 'X', projectWrapper);
+        //event listener for deleting project
+
+        const projectName = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('div', null, 'projectName', this.name, projectWrapper);
+    }
+
+    //render method for projects
+
+    //render tasks in project
+    
+    //delete tasks     sets current task
+    //edit tasks sets current task
+}
+
+let project1 = new Project('project1', 'this fucking project'); console.log(project1);
+project1.render();
 
 
 
@@ -47,10 +98,11 @@ class Task {
 
     render() {
         const taskWrapper = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('div', this.id, 'task', null, taskContainer); 
-        //event listener for click/edit?
+        //event listener for click/edit?  //set specific task?
 
         const completeButton = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('button', null, 'taskCompleteButton', '✓', taskWrapper);
         //event listener for changing status?
+
         (this.completedStatus === false) ? completeButton.style.backgroundColor = '#EFEFEF' : completeButton.style.backgroundColor = 'rgb(115, 155, 96)';
         const taskName = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('div', null, 'taskNameDiv', this.name, taskWrapper);
         const taskPriority = (0,_dom__WEBPACK_IMPORTED_MODULE_0__.createElement)('div', null, 'taskPriorityDiv', this.priority, taskWrapper);
@@ -66,13 +118,6 @@ task1.render();
 
 
 let selectedTask;
-
-// function createElement(type, id, classList, info, parent) {
-//     const element = document.createElement(type);
-//     if(id) element.id = id;
-//     if(classList) element.classList.add(classList);
-//     if(info) element.textContent = info;
-// }
 
 //method for when it is clicked set specific task
 
@@ -106,7 +151,6 @@ function setId () {
     return Math.random();
 }
 
-setId();
 
 
 
